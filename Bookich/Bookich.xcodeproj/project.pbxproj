@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D915B3292CB57F9B0071A842 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D915B3282CB57F9B0071A842 /* FirebaseAuth */; };
 		D915B32D2CB699A90071A842 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D915B32C2CB699A90071A842 /* GoogleService-Info.plist */; };
-		D9259FE92CBFCC37000ED8CC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9259FE82CBFCC37000ED8CC /* AuthService.swift */; };
 		D9680CAF2CB40D9F0065E376 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9680CAE2CB40D9F0065E376 /* AppDelegate.swift */; };
 		D9680CB12CB40D9F0065E376 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9680CB02CB40D9F0065E376 /* SceneDelegate.swift */; };
 		D9680CB32CB40D9F0065E376 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9680CB22CB40D9F0065E376 /* ViewController.swift */; };
@@ -47,7 +46,6 @@
 
 /* Begin PBXFileReference section */
 		D915B32C2CB699A90071A842 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D9259FE82CBFCC37000ED8CC /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D9680CAB2CB40D9F0065E376 /* Bookich.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookich.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9680CAE2CB40D9F0065E376 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9680CB02CB40D9F0065E376 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				D9BF10B72CBD09CB00745AE6 /* AuthVM.swift */,
-				D9259FE82CBFCC37000ED8CC /* AuthService.swift */,
 			);
 			path = VM;
 			sourceTree = "<group>";
@@ -343,7 +340,6 @@
 				D9BF10BD2CBD551500745AE6 /* LocalSource.swift in Sources */,
 				D9680CB12CB40D9F0065E376 /* SceneDelegate.swift in Sources */,
 				D9B418742CBE7ADC002ED318 /* AppContainer.swift in Sources */,
-				D9259FE92CBFCC37000ED8CC /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

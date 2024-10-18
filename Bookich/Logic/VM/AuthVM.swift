@@ -9,15 +9,31 @@ import Foundation
 import FirebaseAuth
 
 class AuthVM {
+    
+    var authService: AuthService
+    
+    init(authService: AuthService) {
+        self.authService = authService
+    }
 
-    func checkUser(email: String, password: String) async throws -> AuthDataResult {
-        return try await withCheckedThrowingContinuation { continuation in
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let error = error {
-                    continuation.resume(throwing: error)
-                } else if let authResult = authResult {
-                    continuation.resume(returning: authResult)
-                }
+    func signInUser(email: String, password: String) {
+        Task {
+            do {
+                let authResult = try await authService.signInUser(email: email, password: password)
+                print("Успешно авторизован: \(authResult.user.uid)")
+            } catch {
+                print("Ошибка авторизации: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func signUpUser(email: String, password: String) {
+        Task {
+            do {
+                let authResult = try await authService.signUpUser(email: email, password: password)
+                print("Успешно авторизован: \(authResult.user.uid)")
+            } catch {
+                print("Ошибка авторизации: \(error.localizedDescription)")
             }
         }
     }

@@ -13,11 +13,8 @@ class AppContainer {
     static private let container = Container()
     
     static func setup() {
-        container.register(AuthService.self) { r in
-            AuthService()
-        }
         container.register(AuthVM.self) { r in
-            AuthVM(authService: r.resolve(AuthService.self)!)
+            AuthVM()
         }
     }
     
