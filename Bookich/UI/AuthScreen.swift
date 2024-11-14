@@ -12,6 +12,7 @@ import RxSwift
 
 class AuthScreen: UIViewController {
     var vm = AppContainer.resolve(AuthVM.self)
+    let mainTabBarScreen = MainTabBarController()
     
     var signUp = true {
         willSet {
@@ -29,14 +30,13 @@ class AuthScreen: UIViewController {
                 switchlabel.text = "Sign Up"
             }
             textFieldEmail.snp.remakeConstraints { make in
-                       make.top.equalTo(newValue ? titleLabel.snp.bottom : textFieldName.snp.bottom).offset(20)
+                make.top.equalTo(newValue ? textFieldName.snp.bottom : titleLabel.snp.bottom).offset(20)
                        make.leading.equalToSuperview().offset(16)
                        make.trailing.equalToSuperview().inset(16)
                        make.height.equalTo(40)
                    }
         }
     }
-    
     
     let titleLabel = UILabel()
     let textFieldName = UITextField()
@@ -45,19 +45,41 @@ class AuthScreen: UIViewController {
     let button = UIButton()
     let switchlabel = UILabel()
     let questionlabel = UILabel()
+    let logo = UIImageView(image: UIImage(named: "logo"))
+    let darkBgrd = UIView()
+    let testButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        view.backgroundColor = .lightBlue
+        view.backgroundColor = .bgrGray
     }
     
     func setup() {
+     
+        view.addSubview(logo)
+        logo.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(94)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(104)
+        }
+        
+        darkBgrd.backgroundColor = .lightBlue
+        darkBgrd.layer.cornerRadius = 50
+        darkBgrd.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        darkBgrd.layer.masksToBounds = true
+        view.addSubview(darkBgrd)
+        darkBgrd.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(250)
+            make.bottom.equalToSuperview().offset(0)
+            make.width.equalToSuperview()
+        }
+        
         titleLabel.text = "Sign Up"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(100)
+            make.top.equalTo(logo.snp_bottomMargin).offset(85)
             make.centerX.equalToSuperview()
             make.height.equalTo(40)
         }
@@ -98,7 +120,7 @@ class AuthScreen: UIViewController {
         
         button.setTitle("Sign up", for: .normal)
         button.tintColor = .white
-        button.backgroundColor = .blue
+        button.backgroundColor = .darkBlue
         button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
@@ -116,7 +138,7 @@ class AuthScreen: UIViewController {
         
         switchlabel.text = "Sign In"
         switchlabel.isUserInteractionEnabled = true
-        switchlabel.textColor = UIColor.blue
+        switchlabel.textColor = .darkBlue
         switchlabel.font = UIFont.boldSystemFont(ofSize: 15)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeRegist))
         switchlabel.addGestureRecognizer(tapGesture)
@@ -137,7 +159,23 @@ class AuthScreen: UIViewController {
             make.centerX.equalToSuperview()
             make.height.equalTo(40)
         }
-        
+        testButton.setTitle("test Go to MainScreen", for: .normal)
+        testButton.tintColor = .white
+        testButton.backgroundColor = .blue
+        testButton.layer.cornerRadius = 20
+        testButton.layer.masksToBounds = true
+        testButton.addTarget(self, action: #selector(goToMainBtnTapped), for: .touchUpInside)
+        view.addSubview(testButton)
+        testButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(40)
+        }
+    }
+    
+    @objc private func goToMainBtnTapped() {
+        self.navigationController?.pushViewController(mainTabBarScreen, animated: true)
     }
     
     @objc private func changeRegist() {
